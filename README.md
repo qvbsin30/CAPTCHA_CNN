@@ -1,6 +1,3 @@
-以下是根據您提供的 Python 檔案內容，為您的驗證碼識別專案撰寫的完整 README 文件。這個 README 包含專案概覽、功能、安裝方法、使用說明、專案結構、模型架構、貢獻指南和授權資訊，旨在幫助使用者快速理解並使用您的專案。
-
----
 
 # Captcha Recognition with CNN
 
@@ -21,18 +18,7 @@
 ## 安裝
 按照以下步驟設置專案環境：
 
-1. **複製專案**：
-   ```bash
-   git clone https://github.com/your-username/captcha-recognition.git
-   ```
-   （請將 `your-username` 替換為您的 GitHub 用戶名）
-
-2. **進入專案目錄**：
-   ```bash
-   cd captcha-recognition
-   ```
-
-3. **安裝依賴**：
+**安裝依賴**：
    確保已安裝 Python 3.x，然後運行：
    ```bash
    pip install torch torchvision pillow matplotlib
@@ -70,22 +56,6 @@
    ```
    - 這將在測試集上評估模型的準確率並輸出結果。
 
----
-
-## 專案結構
-```
-captcha-recognition/
-│
-├── generate_captcha.py   # 生成驗證碼圖片的腳本
-├── model.py              # CNN 模型定義
-├── utils.py              # 工具函數（標籤轉換）
-├── dataset.py            # 自定義資料集類別
-├── train.py              # 訓練腳本
-├── test.py               # 測試腳本
-├── train/                # 訓練圖片資料夾
-├── test/                 # 測試圖片資料夾
-└── captcha_model.pth     # 訓練好的模型（訓練後生成）
-```
 
 ---
 
@@ -104,20 +74,8 @@ captcha-recognition/
 
 ---
 
-## 貢獻
-歡迎對此專案進行貢獻！請按照以下步驟操作：
-1. Fork 這個專案。
-2. 創建一個新分支：
-   ```bash
-   git checkout -b feature-branch
-   ```
-3. 提交您的更改並推送 Pull Request。
-
----
 
 
-
----
 
 ## 注意事項
 - **字體文件**：運行 `generate_captcha.py` 前，確保系統中已安裝 `arial.ttf` 字體，或修改代碼以使用其他字體。
