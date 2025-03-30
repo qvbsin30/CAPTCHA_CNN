@@ -74,12 +74,3 @@ The model is a custom CNN with the following structure:
 
 ---
 
-## Notes
-- **Font File**: Before running `generate_captcha.py`, ensure that the system has the `arial.ttf` font installed or modify the code to use another font.
-- **Hardware Support**: If a GPU is available during training and testing, it will be used automatically; otherwise, the CPU is used.
-- **Image Dimensions**: The model expects images of size 160×80 pixels in grayscale, and the generated images are adjusted to this size.
-
-This translation provides an English version of the original README, preserving the structure and detail of the project description.
-
----
-來自 Perplexity 的回答: pplx.ai/share
