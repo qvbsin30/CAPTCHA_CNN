@@ -1,85 +1,85 @@
+Below is the English translation of the README:
 
 # Captcha Recognition with CNN
 
-## 概覽
-這個專案是一個基於卷積神經網絡（CNN）的驗證碼識別系統。它的主要目標是生成包含 4 位驗證碼的圖片（由小寫英文和數字組成），並訓練一個 CNN 模型來識別這些圖片中的文本。驗證碼圖片包含背景噪點、隨機干擾線和圖片扭曲等特徵，以模擬真實環境並增加識別難度。
+## Overview
+This project is a captcha recognition system based on Convolutional Neural Networks (CNN). Its primary goal is to generate images containing 4-character captchas (comprising lowercase letters and numbers) and to train a CNN model to recognize the text in these images. The captcha images include features such as background noise, random interference lines, and image distortions to simulate real-world conditions and increase recognition difficulty.
 
 ---
 
-## 功能
-- **驗證碼生成**：自動生成 4 位驗證碼圖片，並保存到 `train` 和 `test` 資料夾中。
-- **資料集處理**：自定義的 `CaptchaDataset` 類，用於加載和預處理驗證碼圖片及其標籤。
-- **模型訓練**：使用 CNN 模型進行訓練，支持批量處理並可視化學習曲線。
-- **模型測試**：在測試集上評估模型的識別準確率。
-- **工具函數**：提供標籤與 one-hot 編碼之間的轉換功能。
+## Features
+- **Captcha Generation**: Automatically generates 4-character captcha images and saves them into the `train` and `test` folders.
+- **Dataset Processing**: A custom `CaptchaDataset` class is provided to load and preprocess the captcha images along with their labels.
+- **Model Training**: Utilizes a CNN model for training, supports batch processing, and visualizes the learning curve.
+- **Model Testing**: Evaluates the model's recognition accuracy on the test set.
+- **Utility Functions**: Offers functions to convert between labels and one-hot encoding.
 
 ---
 
-## 安裝
-按照以下步驟設置專案環境：
+## Installation
+Follow the steps below to set up the project environment:
 
-**安裝依賴**：
-   確保已安裝 Python 3.x，然後運行：
-   ```bash
-   pip install torch torchvision pillow matplotlib
-   ```
-   這些依賴包括：
-   - `torch` 和 `torchvision`：用於構建和訓練 CNN 模型。
-   - `pillow`：用於圖片處理。
-   - `matplotlib`：用於繪製學習曲線。
+**Install Dependencies**:  
+Ensure that Python 3.x is installed, and then run:
+```bash
+pip install torch torchvision pillow matplotlib
+```
+These dependencies include:
+- `torch` and `torchvision`: Used to build and train the CNN model.
+- `pillow`: For image processing.
+- `matplotlib`: For plotting the learning curves.
 
 ---
 
-## 使用方法
-按照以下步驟運行專案：
+## Usage
+Follow these steps to run the project:
 
-1. **生成驗證碼圖片**：
-   運行以下指令生成訓練和測試用的驗證碼圖片：
+1. **Generate Captcha Images**:  
+   Execute the following command to generate captcha images for training and testing:
    ```bash
    python generate_captcha.py
    ```
-   - 這將在 `train` 資料夾中生成 10,000 張圖片，在 `test` 資料夾中生成 1,000 張圖片。
-   - 圖片尺寸為 180x100 像素，包含噪點、干擾線和扭曲效果。
+   - This command creates 10,000 images in the `train` folder and 1,000 images in the `test` folder.
+   - The images are 180x100 pixels, featuring noise, interference lines, and distortion effects.
 
-2. **訓練模型**：
-   運行訓練腳本：
+2. **Train the Model**:  
+   Run the training script:
    ```bash
    python train.py
    ```
-   - 訓練參數：批量大小 8，訓練 10 個 epoch，學習率 0.001。
-   - 訓練完成後，模型將保存為 `captcha_model.pth`，並顯示損失和準確率的學習曲線。
+   - Training parameters: batch size of 8, 10 epochs, learning rate of 0.001.
+   - Upon completion, the model is saved as `captcha_model.pth`, and the learning curves for loss and accuracy are displayed.
 
-3. **測試模型**：
-   運行測試腳本：
+3. **Test the Model**:  
+   Run the testing script:
    ```bash
    python test.py
    ```
-   - 這將在測試集上評估模型的準確率並輸出結果。
-
-
----
-
-## 模型架構
-模型是一個自定義的 CNN，結構如下：
-- **輸入**：160x80 像素的灰階圖（1 通道）。
-- **卷積層**：
-  - Conv1：1 -> 32 通道，3x3 卷積核，padding=1。
-  - Conv2：32 -> 64 通道，3x3 卷積核，padding=1。
-  - Conv3：64 -> 128 通道，3x3 卷積核，padding=1，含 BatchNorm。
-  - Conv4：128 -> 256 通道，3x3 卷積核，padding=1。
-  - Conv5：256 -> 512 通道，3x3 卷積核，padding=1，含 BatchNorm。
-- **池化層**：5 個 MaxPool2d (2x2)，逐步將圖片尺寸從 160x80 降至 5x2。
-- **全連接層**：512 * 5 * 2 -> 4 * 36（4 位驗證碼，每位 36 類：0-9 和 a-z）。
-- **激活函數**：ReLU。
+   - This evaluates the model's accuracy on the test set and outputs the results.
 
 ---
 
-
-
-
-## 注意事項
-- **字體文件**：運行 `generate_captcha.py` 前，確保系統中已安裝 `arial.ttf` 字體，或修改代碼以使用其他字體。
-- **硬體支持**：訓練和測試時，若有 GPU 可用將自動使用，否則使用 CPU。
-- **圖片尺寸**：模型輸入尺寸為 160x80 像素，灰階圖，生成圖片時會調整為此大小。
+## Model Architecture
+The model is a custom CNN with the following structure:
+- **Input**: A 160x80 pixel grayscale image (1 channel).
+- **Convolutional Layers**:
+  - **Conv1**: 1 → 32 channels, 3×3 kernel, padding=1.
+  - **Conv2**: 32 → 64 channels, 3×3 kernel, padding=1.
+  - **Conv3**: 64 → 128 channels, 3×3 kernel, padding=1, includes BatchNorm.
+  - **Conv4**: 128 → 256 channels, 3×3 kernel, padding=1.
+  - **Conv5**: 256 → 512 channels, 3×3 kernel, padding=1, includes BatchNorm.
+- **Pooling Layers**: 5 MaxPool2d layers (2×2) progressively reduce the image dimensions from 160×80 to 5×2.
+- **Fully Connected Layer**: Transforms from 512 × 5 × 2 to 4 × 36 (4-character captcha, with each character classified among 36 classes: digits 0-9 and letters a-z).
+- **Activation Function**: ReLU.
 
 ---
+
+## Notes
+- **Font File**: Before running `generate_captcha.py`, ensure that the system has the `arial.ttf` font installed or modify the code to use another font.
+- **Hardware Support**: If a GPU is available during training and testing, it will be used automatically; otherwise, the CPU is used.
+- **Image Dimensions**: The model expects images of size 160×80 pixels in grayscale, and the generated images are adjusted to this size.
+
+This translation provides an English version of the original README, preserving the structure and detail of the project description.
+
+---
+來自 Perplexity 的回答: pplx.ai/share
