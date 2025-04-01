@@ -2,6 +2,7 @@
 
 ## Overview
 This project is a captcha recognition system based on Convolutional Neural Networks (CNN). Its primary goal is to generate images containing 4-character captchas (comprising lowercase letters and numbers) and to train a CNN model to recognize the text in these images. The captcha images include features such as background noise, random interference lines, and image distortions to simulate real-world conditions and increase recognition difficulty.
+
 ![4wc6](https://github.com/user-attachments/assets/d8edac55-734e-486c-a9bf-77294f3c69df)
 
 ---
