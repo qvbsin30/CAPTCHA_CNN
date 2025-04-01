@@ -72,5 +72,8 @@ The model is a custom CNN with the following structure:
 
 ---
 
-## Learning Curve
+## Learning Curve and Test Accuracy
 ![learning_curve](https://github.com/user-attachments/assets/71b63250-5188-45d1-b670-3a8f2f4fcb27)
+
+![test_accuracy](https://github.com/user-attachments/assets/217f246b-5237-46ac-9b73-01930e79cc0e)
+
